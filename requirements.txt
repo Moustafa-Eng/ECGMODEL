@@ -1,7 +1,9 @@
-﻿gunicorn
+gunicorn
 Flask
+flask-Cors
 joblib
-Flask-Cors
-numpy
-opencv-python
-tensorflow
+numpy==1.25.2
+opencv-python==4.8.0.76
+scikit-learn==1.2.2
+keras
+tensorflow==2.15.0
