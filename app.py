@@ -22,7 +22,7 @@ gdown.download(url, model_path, quiet=False)
 def load_model(model_path):
     try:
         # Attempt to load as a Keras model
-        model = joblib.load(model_path)
+        model = keras.models.load_model(model_path)
         print(f"Model loaded successfully")
         return model
     except Exception as e:
