@@ -3,13 +3,21 @@ from flask_cors import CORS
 import numpy as np
 import cv2
 import joblib
-
+import gdown
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # Load the saved model
-model_path = "trained_model5_inceptionv3old.joblib"
+# Google Drive file ID
+file_id = '1Qfi3cT2cWTLs_bUtc5auS5l0ttujIsij'
+# Google Drive download URL
+url = f'https://drive.google.com/uc?id={file_id}'
+# Output file name
+model_path = 'trained_model5_inceptionv3old.h5'
+
+# Download the file from Google Drive
+gdown.download(url, model_path, quiet=False)
 def load_model(model_path):
     try:
         # Attempt to load as a Keras model
