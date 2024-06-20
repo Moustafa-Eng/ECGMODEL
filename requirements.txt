@@ -1,6 +1,6 @@
 ﻿gunicorn
 Flask
-flask-cores
+Flask-Cors
 numpy
 opencv-python
 scikit-learn
