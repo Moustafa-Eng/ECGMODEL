@@ -1,5 +1,6 @@
 ﻿gunicorn
 Flask
+joblib
 Flask-Cors
 numpy
 opencv-python
