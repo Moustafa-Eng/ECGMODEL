@@ -26,7 +26,7 @@ try:
         print(f"Model loaded successfully")
 except Exception as e:
         print(f"Error loading model: {str(e)}")
-        return None
+
 
 
 
