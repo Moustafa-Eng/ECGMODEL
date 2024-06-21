@@ -1,9 +1,8 @@
-﻿gunicorn
+gunicorn
 Flask
-flask-Cors
-gdown
+flask-cors
 numpy
 opencv-python
-scikit-learn
 keras
 tensorflow
+joblib
