@@ -19,17 +19,16 @@ model_path = 'trained_model5_inceptionv3old.h5'
 
 # Download the file from Google Drive
 gdown.download(url, model_path, quiet=False)
-def load_model(model_path):
-    try:
+
+try:
         # Attempt to load as a Keras model
         model = keras.models.load_model(model_path)
         print(f"Model loaded successfully")
-        return model
-    except Exception as e:
+except Exception as e:
         print(f"Error loading model: {str(e)}")
         return None
 
-loaded_model = load_model(model_path)
+
 
 # Ensure the loaded model is compiled (if necessary)
 # loaded_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
@@ -105,7 +104,7 @@ def predict():
             expanded_photo = np.expand_dims(normalized_photo, axis=0)
 
             # Make prediction
-            prediction = loaded_model.predict(expanded_photo)
+            prediction = model.predict(expanded_photo)
 
             # Get the predicted category
             predicted_category = class_labels[np.argmax(prediction)]
