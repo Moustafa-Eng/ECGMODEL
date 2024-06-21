@@ -4,31 +4,26 @@ import numpy as np
 import keras
 import cv2
 import joblib
-import gdown
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-# Load the saved model
-# Google Drive file ID
-file_id = '1Qfi3cT2cWTLs_bUtc5auS5l0ttujIsij'
-# Google Drive download URL
-url = f'https://drive.google.com/uc?id={file_id}'
-# Output file name
-model_path = 'trained_model5_inceptionv3old.h5'
+
+model_path = 'trained_model5_inceptionv3old.joblib'
 
 # Download the file from Google Drive
-gdown.download(url, model_path, quiet=False)
 
-try:
+def load_model(model_path):
+    try:
         # Attempt to load as a Keras model
-        model = keras.models.load_model(model_path)
+        model = joblib.load(model_path)
         print(f"Model loaded successfully")
-except Exception as e:
+        return model
+    except Exception as e:
         print(f"Error loading model: {str(e)}")
+        return None
 
-
-
+loaded_model = load_model(model_path)
 
 # Ensure the loaded model is compiled (if necessary)
 # loaded_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
@@ -104,7 +99,7 @@ def predict():
             expanded_photo = np.expand_dims(normalized_photo, axis=0)
 
             # Make prediction
-            prediction = model.predict(expanded_photo)
+            prediction = loaded_model.predict(expanded_photo)
 
             # Get the predicted category
             predicted_category = class_labels[np.argmax(prediction)]
@@ -121,3 +116,4 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
