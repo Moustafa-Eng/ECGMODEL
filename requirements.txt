@@ -6,3 +6,4 @@ opencv-python
 keras
 tensorflow
 joblib
+gdown
