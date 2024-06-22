@@ -100,7 +100,7 @@ def predict():
             expanded_photo = np.expand_dims(normalized_photo, axis=0)
 
             # Make prediction
-            prediction = loaded_model.predict(expanded_photo)
+            prediction = model.predict(expanded_photo)
 
             # Get the predicted category
             predicted_category = class_labels[np.argmax(prediction)]
