@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
-import keras
 import cv2
 import joblib
 
@@ -9,21 +8,22 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 
+# Google Drive file ID
+file_id = '1d9bLpoK4Mn56b_EzpHtEF8d3x0xBWlk6'
+# Google Drive download URL
+url = f'https://drive.google.com/uc?id={file_id}'
+# Output file name
 model_path = 'trained_model5_inceptionv3old.joblib'
 
 # Download the file from Google Drive
+gdown.download(url, model_path, quiet=False)
 
-def load_model(model_path):
-    try:
+try:
         # Attempt to load as a Keras model
         model = joblib.load(model_path)
         print(f"Model loaded successfully")
-        return model
-    except Exception as e:
+except Exception as e:
         print(f"Error loading model: {str(e)}")
-        return None
-
-loaded_model = load_model(model_path)
 
 # Ensure the loaded model is compiled (if necessary)
 # loaded_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
