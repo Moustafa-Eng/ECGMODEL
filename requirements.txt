@@ -3,7 +3,7 @@ Flask
 flask-cors
 numpy
 opencv-python
-tensorflow==2.12.0
+tensorflow==2.15.0
 keras==3.0.3
 joblib
 gdown
