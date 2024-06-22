@@ -3,6 +3,6 @@ Flask
 flask-cors
 numpy
 opencv-python
-keras
+tensorflow
 joblib
 gdown
